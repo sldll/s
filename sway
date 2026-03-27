@@ -4,7 +4,6 @@ set -euo pipefail
 sleep 0.2
 
 HOST=ubuntu
-
 CNTRY=NL
 R="Europe/Amsterdam"
 

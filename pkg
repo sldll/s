@@ -52,11 +52,13 @@ intel-media-driver
 vulkan-intel
 intel-gmmlib
 #
+nerd-fonts
 terminus-font
 otf-font-awesome
 ttf-font-awesome
 ttf-nerd-fonts-symbols
 ttf-jetbrains-mono-nerd
+ttf-jetbrains-mono
 ttf-terminus-nerd
 ttf-liberation
 noto-fonts
@@ -64,6 +66,7 @@ noto-fonts-cjk
 noto-fonts-emoji
 noto-fonts-extra
 #wayland
+xorg-xwayland
 waybar
 sway
 swaybg
@@ -73,6 +76,7 @@ autotiling-rs
 #wmenu
 foot
 fish
+polkit-gnome
 xdg-desktop-portal-wlr
 xdg-desktop-portal
 xdg-desktop-portal-gtk

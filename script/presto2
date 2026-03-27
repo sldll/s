@@ -1,0 +1,17 @@
+fd . ~/dot --type f --no-ignore --hidden --exec sh -c '
+  orig="${1#$HOME/dot}"
+  parent="$(basename "$(dirname "$1")")/$(basename "$1")"
+  grep -qI "" "$1" || exit 0
+  for base in "$HOME" /etc /usr/share /usr/local/share; do
+    for path in "$base$orig" "$base/$parent"; do
+      if [ -f "$path" ]; then
+        grep -qI "" "$path" || break 2
+        bak="$HOME/bak${orig}.bak"
+        mkdir -p "$(dirname "$bak")"
+        comm -13 <(grep -v "^\s*$" "$path" | sort) <(grep -v "^\s*$" "$1" | sort) >> "$bak"
+        [ ! -s "$bak" ] && rm "$bak"
+        break 2
+      fi
+    done
+  done
+' _ {} \;
