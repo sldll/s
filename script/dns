@@ -1,0 +1,22 @@
+#!/bin/bash
+
+DNS4="1.1.1.1,8.8.8.8"
+DNS6="2001:4860:4860::8888,2606:4700:4700::1111"
+
+# Wait for network to be online
+while ! ping -c 1 -W 2 1.1.1.1 &>/dev/null; do
+    sleep 5
+done
+
+nmcli -t -f NAME connection show --active | while IFS= read -r CONN; do
+    [[ "$CONN" == "lo" ]] && continue
+
+    nmcli connection modify "$CONN" \
+        ipv4.ignore-auto-dns yes \
+        ipv4.dns "$DNS4" \
+        ipv6.ignore-auto-dns yes \
+        ipv6.dns "$DNS6"
+
+    nmcli connection up "$CONN"
+    touch ~/.dns-done
+done

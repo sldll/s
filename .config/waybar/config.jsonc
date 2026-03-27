@@ -1,0 +1,188 @@
+// -*- mode: jsonc -*-
+{
+    "position": "bottom",
+    "height": 37,
+    "spacing": 2,
+    //"output": ["eDP-1", "HDMI-A-1"],
+    //"all-outputs": true,
+
+    "modules-left": [
+        "sway/workspaces"
+    ],
+
+
+    "modules-right": [
+        "custom/btc",
+        "custom/pkg",
+        "custom/sink",
+        "pulseaudio",
+        "network",
+        "custom/net",
+        "battery",
+	"idle_inhibitor",
+        "clock",
+	"custom/power"
+	//"power-profiles-daemon"
+        //"tray"
+    ],
+
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "warp-on-scroll": false,
+        "format": "{name}"
+        //"format": "{id}"
+    },
+
+    "power-profiles-daemon": {
+      "format": "{icon}",
+      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      "tooltip": true,
+      "format-icons": {
+        "default": "",
+        "performance": "",
+        "balanced": "",
+        "power-saver": ""
+      }
+      },
+
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+
+    "custom/btc": {
+        "exec": "~/script/b",
+        "interval": 600,
+        "format": "{} "
+    },
+
+    "custom/pkg": {
+        "exec": "~/script/up",
+        "interval": 600,
+        "format": "({}) ",
+        "on-click": "foot -e ~/script/up2"
+},
+    
+    "custom/sink": {
+        "exec": "~/script/sink",
+        "signal": 8,
+        "format": "{}"
+},
+
+     
+    "custom/net": {
+	  "exec": "ip -4 -o addr show scope global | awk '{split($4,a,\".\"); split(a[4],b,\"/\"); printf \" %s \", b[1]}'",
+	/*"exec": "ip -4 -o addr show scope global | awk '{split($4,a,\".\"); split(a[4],b,\"/\"); printf \" %s:%s \", $2, b[1]}'",*/
+	"interval": 600
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": " ",
+            "deactivated": " "
+	}
+    },
+      
+    "tray": {
+        "spacing": 0
+    },
+
+    "clock": {
+        "format": " {:%a, %b %d | %H:%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%H:%M}"
+    },
+
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+
+    "memory": {
+        "format": "{}% "
+    },
+
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""]
+    },
+
+    "backlight": {
+        "format": "{percent}% {icon}",
+        "format-icons": ["","","","","","","","",""]
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-full": "{capacity}%",
+        "format-charging": "{capacity}%",
+        "format-plugged": "{capacity}%",
+        "format-alt": "{time}",
+        "format-icons": ["  ","  ","  ","  ","  "]
+    },
+
+    "network": {
+        "format-wifi": "{essid}{signalStrength}%",
+        "format-ethernet": "{gwaddr}",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": "down",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+
+    "pulseaudio": {
+        "format": "{volume}%{format_source}",
+        "format-bluetooth": "{volume}% {format_source}",
+        "format-bluetooth-muted": " {format_source}",
+        "format-muted": "{volume}%{format_source}",
+        "format-source": "{volume}%",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["","",""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "custom/media": {
+        "format": "{icon} {text}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "default": "🎜"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null"
+    },
+
+        "custom/power": {
+        "format": " ⏻ ",
+        "tooltip": false,
+        "menu": "on-click",
+        "menu-file": "$HOME/.config/waybar/power_menu.xml",
+        "menu-actions": {
+            "shutdown": "shutdown",
+            "reboot": "reboot",
+            "suspend": "systemctl suspend",
+            "hibernate": "systemctl hibernate"
+        }
+    }
+}

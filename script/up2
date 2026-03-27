@@ -1,0 +1,8 @@
+#!/bin/bash
+rm -f /tmp/waybar-updates
+echo ""
+echo "PACMAN"
+sudo pacman -Syu 
+echo ""
+echo "FLATPAK"
+flatpak update

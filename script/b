@@ -1,0 +1,23 @@
+#!/bin/bash
+LOCKFILE="/tmp/btc_price.lock"
+
+if [[ -f "$LOCKFILE" ]]; then
+    age=$(( $(date +%s) - $(stat -c %Y "$LOCKFILE") ))
+    if [[ $age -lt 20 ]]; then
+        cat /tmp/btc_price.cache 2>/dev/null || echo "b"
+        exit 0
+    fi
+fi
+
+touch "$LOCKFILE"
+
+response=$(curl -s --max-time 10 "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=eur")
+price=$(echo "$response" | jq -r '.bitcoin.eur')
+
+if [[ "$price" == "null" || -z "$price" ]]; then
+    echo " | b"
+    echo " | b" > /tmp/btc_price.cache
+else
+    echo " | $price"
+    echo " | $price" > /tmp/btc_price.cache
+fi

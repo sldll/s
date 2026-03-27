@@ -1,0 +1,3 @@
+pactl subscribe | grep --line-buffered "change" | while read -r _; do
+  pkill -RTMIN+8 waybar
+done
