@@ -94,7 +94,7 @@ pacman -S --noconfirm mkinitcpio
 
 sed -i 's/^HOOKS=.*/HOOKS=(base udev autodetect modconf keyboard block encrypt filesystems)/' /etc/mkinitcpio.conf
 
-curl -LO https://github.com/instantuzer/h/raw/main/pkg
+curl -LO https://github.com/sldll/s/raw/main/pkg
 grep -v '^\s*#' pkg | pacman -S --needed --noconfirm -
 
 echo "root:$PASSWORD" | chpasswd
@@ -139,7 +139,7 @@ systemctl enable fstrim.timer
 systemctl enable tlp
 systemctl enable tlp-pd
 
-su - $USERNAME -c 'git clone https://github.com/instantuzer/h dot && cd dot && stow --no-folding --adopt . && git restore .'
+su - $USERNAME -c 'git clone https://github.com/sldll/s dot && cd dot && stow --no-folding --adopt . && git restore .'
 
 echo
 echo "🥵💀🥵💀🥵💀🥵💀🥵💀🥵💀🥵💀🥵💀🥵💀🥵💀🥵💀🥵💀"
