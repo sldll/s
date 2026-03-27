@@ -61,6 +61,8 @@ pacstrap -KP /mnt base
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
+# && cd dot && stow --no-folding --adopt . && git restore .
+
 #sudo pacman -S upower
 #sudo systemctl enable upower
 
@@ -139,7 +141,7 @@ systemctl enable fstrim.timer
 systemctl enable tlp
 systemctl enable tlp-pd
 
-su - $USERNAME -c 'git clone https://github.com/sldll/s dot && cd dot && stow --no-folding --adopt . && git restore .'
+su - $USERNAME -c 'git clone https://github.com/sldll/s dot'
 
 echo
 echo "🥵💀🥵💀🥵💀🥵💀🥵💀🥵💀🥵💀🥵💀🥵💀🥵💀🥵💀🥵💀"

@@ -7,6 +7,7 @@
 #for_window [class=".*"] opacity 0.9
 exec_always gammastep -P -O 3900
 exec waybar
+exec ~/script/sink2
 exec_always autotiling-rs
 exec export XDG_CURRENT_DESKTOP=sway
 exec export EDITOR=vim
