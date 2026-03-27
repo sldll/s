@@ -430,7 +430,7 @@ lb() {
         touch ~/.luks-done
 	fi
     echo
-    ll
+    dl
 }
 
 gmp() {
