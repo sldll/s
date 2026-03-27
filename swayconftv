@@ -15,8 +15,6 @@ exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
 workspace_auto_back_and_forth yes
-hide_edge_borders smart
-default_border pixel 4
 
 
 exec gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'

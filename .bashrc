@@ -143,8 +143,8 @@ alias stc='file=$(fzf) && tar -I zstd -cvf "$file".tar.zst "$file" && ls'
 
 #alias pq2='read -rp "Archive name: " name && fzf -m --print0 | tar --null -T - -I 'zstd -T0' -cf "${name}-$(date +%F).tar.zst"'
 #alias pqd='file=$(fzf) && tar -I zstd -xvf "$file"'
-alias std='file=$(fzf --prompt="Select .tar.zst file: ") && [ -n "$file" ] && zstd -d "$file" -c | tar -xvf -'
-alias std2='file=$(fd -e zst . | fzf --prompt="Select .zst file: ") && [ -n "$file" ] && zstd -d "$file" -c | tar -xvf -'
+alias stx='file=$(fzf --prompt="Select .tar.zst file: ") && [ -n "$file" ] && zstd -d "$file" -c | tar -xvf -'
+alias stx2='file=$(fd -e zst . | fzf --prompt="Select .zst file: ") && [ -n "$file" ] && zstd -d "$file" -c | tar -xvf -'
 alias stl='echo && zstdfile=$(fzf) && tar -I zstd -tf $zstdfile'
 
 alias stdir='echo && read -p ".tar.zst name: " file && echo && folder=$(fd -t d | fzf) && tar -I zstd -cvf "$file".tar.zst "$folder" && echo && ls' 
