@@ -70,6 +70,7 @@ alias gcl='printf "name/name\nREPONAME: " && read -rp "" REPO  && git clone http
 alias ga='git add . && git commit -m "."'
 alias push='git add . && git commit -m "." && git push'
 
+alias presto='fd . ~/dotfiles --type f --no-ignore --hidden --exclude "*.bak" --exec sh -c '"'"'orig="${1#$HOME/dotfiles}"; [ -f "$HOME$orig" ] && comm -13 <(sort "$HOME$orig") <(sort "$1") >> "$1.bak"'"'"' _ {} \;'
 alias stor='read -p "without git restore..." stow --adopt --no-folding .'
 alias sto='read -p "git pushed?" && stow --no-folding --adopt . && git restore .'
 alias resto='git restore .'
