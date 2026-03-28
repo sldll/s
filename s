@@ -105,7 +105,7 @@ echo "$HOST" >> /etc/hostname
 ln -sf /usr/share/zoneinfo/$R /etc/localtime
 hwclock --systohc
 
-su - $USERNAME -c 'git clone https://aur.archlinux.org/yay'
+su - $USERNAME -c 'git clone https://aur.archlinux.org/yay ; cd yay ; makepkg -si; yay -S firefox-sync --answerdiff=None --answerclean=None --noconfirm'
 
 systemctl enable NetworkManager
 systemctl enable fstrim.timer
