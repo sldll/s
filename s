@@ -40,18 +40,18 @@ done
 
 reflector -c "$CNTRY" -p https --age 4 --latest 15 --save /etc/pacman.d/mirrorlist
 
-pacman_option() {
-  local opt="$1"
-  if grep -q "^#\?${opt}" /etc/pacman.conf; then
-    sed -i "s/^#\?${opt}.*/${opt}/" /etc/pacman.conf
-  else
-    sed -i "/^\[options\]/a ${opt}" /etc/pacman.conf
-  fi
-}
+#pacman_option() {
+#  local opt="$1"
+#  if grep -q "^#\?${opt}" /etc/pacman.conf; then
+#    sed -i "s/^#\?${opt}.*/${opt}/" /etc/pacman.conf
+#  else
+#    sed -i "/^\[options\]/a ${opt}" /etc/pacman.conf
+#  fi
+#}
 
-pacman_option "SigLevel = Never"
-pacman_option "Color"
-pacman_option "ILoveCandy"
+#pacman_option "SigLevel = Never"
+#pacman_option "Color"
+#pacman_option "ILoveCandy"
 
 #sed -i 's/^SigLevel.*/SigLevel = Never/' /etc/pacman.conf
 #sed -i 's/^LocalFileSigLevel.*/LocalFileSigLevel = Never/' /etc/pacman.conf
