@@ -115,7 +115,6 @@ systemctl enable fstrim.timer
 systemctl mask systemd-rfkill.service systemd-rfkill.socket
 systemctl enable tlp
 systemctl enable tlp-pd
-systemctl enable psd
 
 su - $USERNAME -c 'git clone https://github.com/sldll/s dot'
 
