@@ -16,6 +16,12 @@ if [[ "$(tty)" =~ ^/dev/tty[1-3]$ ]]; then
 	fi
 	touch ~/.wifi-done
 
+    if [[ ! -f ~/.psd-done ]]; then
+	systemctl --user enable psd
+    systemctl --user start psd
+	fi
+	touch ~/.psd-done
+
 fi
 
 # If not running interactively, don't do anything
