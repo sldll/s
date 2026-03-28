@@ -19,11 +19,11 @@ SIZE1=+500M
 SIZE2=+80G
 SIZE3=
 
-#sgdisk -Z $DISK
+sgdisk -Z $DISK
 
-#sgdisk -n 1::$SIZE1 -t 1:EF00 -c 1:"EFI" $DISK
-#sgdisk -n 2::$SIZE2 -t 2:8300 -c 2:"ROOT" $DISK
-#sgdisk -n 3::$SIZE3 -t 3:8300 -c 3:"B" $DISK
+sgdisk -n 1::$SIZE1 -t 1:EF00 -c 1:"EFI" $DISK
+sgdisk -n 2::$SIZE2 -t 2:8300 -c 2:"ROOT" $DISK
+sgdisk -n 3::$SIZE3 -t 3:8300 -c 3:"B" $DISK
 
 read -rp "user: " USERNAME
 while true; do
