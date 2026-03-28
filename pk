@@ -29,7 +29,7 @@ zram-generator
 intel-media-driver
 vulkan-intel
 intel-gmmlib
-#nerd-fonts
+nerd-fonts
 #terminus-font
 #otf-font-awesome
 #ttf-font-awesome
@@ -47,7 +47,7 @@ intel-gmmlib
 waybar
 sway
 swaybg
-swaylock
+waylock
 swayidle
 autotiling-rs
 wmenu
