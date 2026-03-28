@@ -5,7 +5,7 @@
 dot="$HOME/dot"
 export PATH="$dot/bin:$PATH"
 
-if [[ "$(tty)" =~ ^/dev/tty[1-6]$ ]]; then
+if [[ "$(tty)" =~ ^/dev/tty[1-3]$ ]]; then
 
 	#setfont ter-132n
 	setfont ter-v24b
