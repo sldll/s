@@ -86,7 +86,7 @@ bootctl install
 echo "title ubuntu" >> /boot/loader/entries/arch.conf
 echo "linux /vmlinuz-linux" >> /boot/loader/entries/arch.conf
 echo "initrd /initramfs-linux.img" >> /boot/loader/entries/arch.conf
-echo "options cryptdevice=/dev/mapper/$CR root=/dev/mapper/$CR rw splash intel_pstate=disable" >> /boot/loader/entries/arch.conf
+echo "options cryptdevice=/dev/nvme0n1p2:$CR root=/dev/mapper/$CR rw splash intel_pstate=disable" >> /boot/loader/entries/arch.conf
 
 echo "[zram0]" >> /etc/systemd/zram-generator.conf
 echo "zram-size = ram / 2" >> /etc/systemd/zram-generator.conf
