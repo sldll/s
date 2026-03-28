@@ -43,11 +43,11 @@ sed -i 's/^SigLevel.*/SigLevel = Never/' /etc/pacman.conf
 sed -i 's/^LocalFileSigLevel.*/LocalFileSigLevel = Never/' /etc/pacman.conf
 sed -i '/^\[options\]/a Color' /etc/pacman.conf
 
-cryptsetup luksFormat --batch-mode ${DISK}${EX}2
+cryptsetup luksFormat --sector-size=4096 --batch-mode ${DISK}${EX}2
 cryptsetup luksOpen ${DISK}${EX}2 $CR
 
 mkfs.fat ${DISK}${EX}1
-mkfs.ext4 /dev/mapper/$CR
+mkfs.ext4 -b 4096 /dev/mapper/$CR
 
 PART_UUID=$(blkid -s UUID -o value "${DISK}${EX}2")
 
