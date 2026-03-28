@@ -35,10 +35,10 @@ intel-gmmlib
 #ttf-font-awesome
 #ttf-nerd-fonts-symbols
 #ttf-nerd-fonts-symbols-mono
-ttf-jetbrains-mono-nerd
+#ttf-jetbrains-mono-nerd
 #ttf-jetbrains-mono
 #ttf-terminus-nerd
-#ttf-firacode-nerd
+ttf-firacode-nerd
 #ttf-liberation
 #noto-fonts
 #noto-fonts-cjk
@@ -49,7 +49,6 @@ sway
 #swaybg
 waylock
 swayidle
-autotiling-rs
 wmenu
 foot
 fish
