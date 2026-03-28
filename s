@@ -19,11 +19,11 @@ SIZE1=+500M
 SIZE2=+80G
 SIZE3=
 
-sgdisk -Z $DISK
+#sgdisk -Z $DISK
 
-sgdisk -n 1::$SIZE1 -t 1:EF00 -c 1:"EFI" $DISK
-sgdisk -n 2::$SIZE2 -t 2:8300 -c 2:"ROOT" $DISK
-sgdisk -n 3::$SIZE3 -t 3:8300 -c 3:"B" $DISK
+#sgdisk -n 1::$SIZE1 -t 1:EF00 -c 1:"EFI" $DISK
+#sgdisk -n 2::$SIZE2 -t 2:8300 -c 2:"ROOT" $DISK
+#sgdisk -n 3::$SIZE3 -t 3:8300 -c 3:"B" $DISK
 
 read -rp "user: " USERNAME
 while true; do
@@ -40,9 +40,24 @@ done
 
 reflector -c "$CNTRY" -p https --age 4 --latest 15 --save /etc/pacman.d/mirrorlist
 
-sed -i 's/^SigLevel.*/SigLevel = Never/' /etc/pacman.conf
-sed -i 's/^LocalFileSigLevel.*/LocalFileSigLevel = Never/' /etc/pacman.conf
-sed -i '/^\[options\]/a Color' /etc/pacman.conf
+pacman_option() {
+  local opt="$1"
+  if grep -q "^#\?${opt}" /etc/pacman.conf; then
+    sed -i "s/^#\?${opt}.*/${opt}/" /etc/pacman.conf
+  else
+    sed -i "/^\[options\]/a ${opt}" /etc/pacman.conf
+  fi
+}
+
+pacman_option "SigLevel = Never"
+pacman_option "Color"
+pacman_option "ILoveCandy"
+
+#sed -i 's/^SigLevel.*/SigLevel = Never/' /etc/pacman.conf
+#sed -i 's/^LocalFileSigLevel.*/LocalFileSigLevel = Never/' /etc/pacman.conf
+#sed -i '/^\[options\]/a SigLevel = Never' /etc/pacman.conf
+#sed -i '/^\[options\]/a Color' /etc/pacman.conf
+#sed -i '/^\[options\]/a ILoveCandy' /etc/pacman.conf
 
 cryptsetup luksFormat --batch-mode ${DISK}${EX}2
 cryptsetup luksOpen ${DISK}${EX}2 $CR
