@@ -29,9 +29,9 @@ zram-generator
 intel-media-driver
 vulkan-intel
 intel-gmmlib
+otf-font-awesome
 #nerd-fonts
 #terminus-font
-#otf-font-awesome
 #ttf-font-awesome
 #ttf-nerd-fonts-symbols
 #ttf-nerd-fonts-symbols-mono
