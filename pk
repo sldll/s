@@ -42,7 +42,7 @@ ttf-firacode-nerd
 #ttf-liberation
 #noto-fonts
 #noto-fonts-cjk
-#noto-fonts-emoji
+noto-fonts-emoji
 #noto-fonts-extra
 waybar
 sway
