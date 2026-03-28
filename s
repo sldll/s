@@ -49,8 +49,6 @@ cryptsetup luksOpen ${DISK}${EX}2 $CR
 mkfs.fat ${DISK}${EX}1
 mkfs.ext4 /dev/mapper/$CR
 
-PART_UUID=$(blkid -s UUID -o value "${DISK}${EX}2")
-
 mount /dev/mapper/$CR /mnt
 mount -o umask=0077 -m ${DISK}${EX}1 /mnt/boot
 
