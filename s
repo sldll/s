@@ -105,13 +105,11 @@ echo "$HOST" >> /etc/hostname
 ln -sf /usr/share/zoneinfo/$R /etc/localtime
 hwclock --systohc
 
-su - $USERNAME -c 'git clone https://aur.archlinux.org/yay ; cd yay ; makepkg -si; yay -S firefox-sync --answerdiff=None --answerclean=None --noconfirm'
-
 systemctl enable NetworkManager
 systemctl enable fstrim.timer
 systemctl enable tlp
 systemctl enable tlp-pd
-systemctl enable firefox-sync
+systemctl enable psd
 
 su - $USERNAME -c 'git clone https://github.com/sldll/s dot'
 
