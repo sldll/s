@@ -251,7 +251,11 @@ t
 	echo "HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER"
 	fi
 
-
+    if [[ ! -f ~/.psd-done ]]; then
+	echo	
+	echo "PSD PSD PSD PSD PSD PSD"
+	echo "FIRE FIRE FIRE FIRE FIRE"
+	fi
 
 
 
