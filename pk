@@ -65,6 +65,7 @@ tlp-pd
 rofi
 firefox
 firefox-ublock-origin
+profile-sync-daemon
 gammastep
 pipewire
 pipewire-alsa
