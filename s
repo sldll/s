@@ -70,8 +70,8 @@ pacman -S --noconfirm mkinitcpio
 
 sed -i 's/^HOOKS=.*/HOOKS=(base udev autodetect microcode modconf keyboard block encrypt filesystems)/' /etc/mkinitcpio.conf
 
-curl -LO https://github.com/sldll/s/raw/main/pkg
-grep -v '^\s*#' pkg | pacman -S --needed --noconfirm -
+curl -LO https://github.com/sldll/s/raw/main/pk
+grep -v '^\s*#' pk | pacman -S --needed --noconfirm -
 
 echo "root:$PASSWORD" | chpasswd
 
