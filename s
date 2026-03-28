@@ -93,6 +93,11 @@ echo "zram-size = ram / 2" >> /etc/systemd/zram-generator.conf
 echo "compression-algorithm = lz4" >> /etc/systemd/zram-generator.conf
 echo "swap-priority = 100" >> /etc/systemd/zram-generator.conf
 
+mkdir -p /etc/systemd/coredump.conf.d/
+echo "[Coredump]" >> /etc/systemd/coredump.conf.d/custom.conf
+echo "Storage=none" >> /etc/systemd/coredump.conf.d/custom.conf
+echo "ProcessSizeMax=0" >> /etc/systemd/coredump.conf.d/custom.conf
+
 echo "vm.swappiness=60" >> /etc/sysctl.d/99-swappiness.conf
 
 echo "GTK_THEME=Adwaita:dark" >> /etc/environment
