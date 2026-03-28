@@ -40,7 +40,7 @@ bindsym $mod+Tab workspace back_and_forth
 # Example configuration:
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
-    output eDP-1 resolution 1920x1080 position 0 0
+    output eDP-1 resolution 1366x768 position 0 0
     output HDMI-A-1 resolution 1920x1080 position 1920 0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
@@ -65,12 +65,12 @@ bindsym $mod+Tab workspace back_and_forth
         xkb_options caps:escape_shifted_capslock
     }
 #
-#   input type:touchpad {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
+   input type:touchpad {
+       dwt enabled
+       tap enabled
+       natural_scroll enabled
+       middle_emulation enabled
+   }
 #
 #   input type:keyboard {
 #       xkb_layout "eu"
