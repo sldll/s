@@ -1,0 +1,11 @@
+#!/bin/sh
+
+apps="mpv sway foot"
+
+bases="/"
+
+for app in $apps; do
+  for base in $bases; do
+    find "$base" -type d -name "$app" 2>/dev/null
+  done
+done
