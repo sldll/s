@@ -2,7 +2,7 @@ fd . ~/dot --type f --no-ignore --hidden --exec sh -c '
   orig="${1#$HOME/dot}"
   parent="$(basename "$(dirname "$1")")/$(basename "$1")"
   grep -qI "" "$1" || exit 0
-  for base in "$HOME" /etc /etc/xdg /usr/share $HOME/.local/share/ /usr/local/share; do
+  for base in "$HOME" /etc /etc/xdg /usr/share /usr/share/doc $HOME/.local/share/ /usr/local/share; do
     for path in "$base$orig" "$base/$parent"; do
       if [ -f "$path" ]; then
         grep -qI "" "$path" || break 2
