@@ -114,6 +114,7 @@ sed -i '1s/^/bindsym Mod1+Tab workspace back_and_forth' /etc/sway/config
 sed -i '1s/^/hide_edge_borders smart' /etc/sway/config
 sed -i '1s/^/default_border pixel 2' /etc/sway/config
 sed -i '1s/^/exec waybar' /etc/sway/config
+sed -i '1s/^/exec gammastep -P -O 3900' /etc/sway/config
 sed -i '1s/^/bindsym Mod1+f layout toggle tabbed split' /etc/sway/config
 
 sed -i 's/Mod4/Mod1/' /etc/sway/config
@@ -121,15 +122,15 @@ sed -i 's/Shift+q/c/' /etc/sway/config
 
 sed -i 's/# font=monospace:size=8/font=terminus:size=14/' /etc/xdg/foot/foot.ini
 
-sed -i 's|// "position":|"position":|' /etc/xdg/waybar/config.jsonc
-sed -i 's|"cpu",|//"cpu",|' /etc/xdg/waybar/config.jsonc
-sed -i 's|"memory",|//"memory",|' /etc/xdg/waybar/config.jsonc
-sed -i 's|"temperature",|//"temperature",|' /etc/xdg/waybar/config.jsonc
-sed -i 's|"keyboard-state",|//"keyboard-state",|' /etc/xdg/waybar/config.jsonc
-sed -i 's|"sway/language",|//"sway/language",|' /etc/xdg/waybar/config.jsonc
-sed -i 's|"battery#bat2",|//"battery#bat2",|' /etc/xdg/waybar/config.jsonc
+sed -i \'s|// "position":|"position":|\' /etc/xdg/waybar/config.jsonc
+sed -i \'s|"cpu",|//"cpu",|\' /etc/xdg/waybar/config.jsonc
+sed -i \'s|"memory",|//"memory",|\' /etc/xdg/waybar/config.jsonc
+sed -i \'s|"temperature",|//"temperature",|\' /etc/xdg/waybar/config.jsonc
+sed -i \'s|"keyboard-state",|//"keyboard-state",|\' /etc/xdg/waybar/config.jsonc
+sed -i \'s|"sway/language",|//"sway/language",|\' /etc/xdg/waybar/config.jsonc
+sed -i \'s|"battery#bat2",|//"battery#bat2",|\' /etc/xdg/waybar/config.jsonc
 
-sed -i 's|font-family: Font|font-family: Terminus, Font|' /etc/xdg/waybar/style.css
+sed -i \'s|font-family: Font|font-family: Terminus, Font|\' /etc/xdg/waybar/style.css
 
 echo
 echo "🥵💀🥵💀🥵💀🥵💀🥵💀🥵💀🥵💀🥵💀🥵💀🥵💀🥵💀🥵💀"
