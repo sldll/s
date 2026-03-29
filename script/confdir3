@@ -1,0 +1,24 @@
+#!/bin/sh
+
+apps="mpv sway foot"
+bases="/"
+extensions="conf ini toml yaml yml cfg"
+exact_names="config configuration"
+
+for app in $apps; do
+  for base in $bases; do
+    find "$base" -type d -name "$app" 2>/dev/null | while read -r dir; do
+      echo "$dir"
+      find "$dir" -type f 2>/dev/null | while read -r file; do
+        name="$(basename "$file")"
+        ext="${name##*.}"
+        for e in $extensions; do
+          [ "$ext" = "$e" ] && echo "$file" && break
+        done
+        for n in $exact_names; do
+          [ "$name" = "$n" ] && echo "$file" && break
+        done
+      done
+    done
+  done
+done
