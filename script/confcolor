@@ -1,0 +1,48 @@
+#!/bin/sh
+
+extensions="conf ini cfg toml yaml yml json rc xml lua qml rasi css scss js ts py sh bash zsh fish"
+exact_names="config configuration rc profile env environment options settings preferences rules policy config.d"
+
+name_pattern=$(echo "$exact_names" | tr ' ' '|')
+
+excludes="
+  --exclude /proc
+  --exclude /sys
+  --exclude /dev
+  --exclude /run
+  --exclude /tmp
+  --exclude /var/tmp
+  --exclude /var/run
+  --exclude /var/lock
+  --exclude /var/cache
+  --exclude /var/log
+  --exclude /boot
+  --exclude /lost+found
+  --exclude $HOME/.config/mozilla
+  --exclude $HOME/.cache/mozilla
+  --exclude /snap
+  --exclude /mnt
+  --exclude /media
+"
+
+if [ $# -gt 0 ]; then
+  for app in "$@"; do
+    fd . / --type d --no-ignore --hidden $excludes \
+      | grep -i "/$app/" | sed 's|/$||' | while read -r dir; do
+        fd . "$dir" --type f --no-ignore --hidden --color always \
+          -e conf -e ini -e cfg -e toml -e yaml -e yml \
+          -e json -e rc -e xml -e lua -e qml -e rasi \
+          -e css -e scss -e js -e ts -e py -e sh \
+          -e bash -e zsh -e fish
+        fd "^($name_pattern)$" "$dir" --type f --no-ignore --hidden --color always
+      done
+  done
+else
+  fd . / --type f --no-ignore --hidden --color always $excludes \
+    -e conf -e ini -e cfg -e toml -e yaml -e yml \
+    -e json -e rc -e xml -e lua -e qml -e rasi \
+    -e css -e scss -e js -e ts -e py -e sh \
+    -e bash -e zsh -e fish
+
+  fd "^($name_pattern)$" / --type f --no-ignore --hidden --color always $excludes
+fi
