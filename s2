@@ -105,6 +105,31 @@ systemctl enable fstrim.timer
 
 su - $USERNAME -c 'git clone https://github.com/sldll/s dot'
 
+sed -i 's/output/#output/' /etc/sway/config
+echo "output eDP-1 resolution 1366x768 position 0 0" >> /etc/sway/config
+echo "output HDMI-A-1 resolution 1920x1080 position 1920 0" >> /etc/sway/config
+echo "bindsym $mod+Tab workspace back_and_forth" >> /etc/sway/config
+echo "set $menu rofi -show drun -show-icons" >> /etc/sway/config
+echo "hide_edge_borders smart" >> /etc/sway/config
+echo "exec waybar" >> /etc/sway/config
+echo "bindsym $mod+f layout toggle tabbed split" >> /etc/sway/config
+
+sed -i 's/Mod4/Mod1/' /etc/sway/config
+sed -i 's/Shift+q/c/' /etc/sway/config
+sed -i 's/+f/+e/' /etc/sway/config
+
+sed -i 's/#font=monospace:size=8/font=terminus:size=14/' /etc/xdg/foot/foot.ini
+
+sed -i 's|//"position":|"position":|' /etc/xdg/waybar/config.jsonc
+sed -i 's|"cpu",|//"cpu",|' /etc/xdg/waybar/config.jsonc
+sed -i 's|"memory",|//"memory",|' /etc/xdg/waybar/config.jsonc
+sed -i 's|"temperature",|//"temperature",|' /etc/xdg/waybar/config.jsonc
+sed -i 's|"keyboard-state",|//"keyboard-state",|' /etc/xdg/waybar/config.jsonc
+sed -i 's|"sway/language",|//"sway/language",|' /etc/xdg/waybar/config.jsonc
+sed -i 's|"battery#bat2",|//"battery#bat2",|' /etc/xdg/waybar/config.jsonc
+
+sed -i 's|font-family: Font|font-family: terminus, Font|' /etc/xdg/waybar/style.css
+
 echo
 echo "🥵💀🥵💀🥵💀🥵💀🥵💀🥵💀🥵💀🥵💀🥵💀🥵💀🥵💀🥵💀"
 echo
