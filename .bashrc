@@ -16,11 +16,10 @@ if [[ "$(tty)" =~ ^/dev/tty[1-3]$ ]]; then
 	fi
 	touch ~/.wifi-done
 
-    if [[ ! -f ~/.psd-done ]]; then
-	systemctl --user enable psd
-    systemctl --user start psd
+        if [[ ! -f ~/.init-done ]]; then
+	$HOME/dot/script/init
 	fi
-	touch ~/.psd-done
+	touch ~/.init-done
 
 fi
 
@@ -237,26 +236,12 @@ t
 #PS1='\[\e[2m\][$(date +%M)]\[\e[0m\] \$ '
 
 
-        nmcli dev show | awk '/DNS/ {print $2}' | grep -vqE '^(1\.1\.1\.1|8\.8\.8\.8|2001:4860:4860::8888|2606:4700:4700::1111)$' && rm -f ~/.dns-done
 
-	echo
-	if [[ ! -f ~/.dns-done ]]; then
-	echo "DNS - DNS - DNS - DNS - DNS - DNS - DNS - DNS - DNS - DNS - DNS - DNS " 
-	echo "DNS - DNS - DNS - DNS - DNS - DNS - DNS - DNS - DNS - DNS - DNS - DNS " 
-	fi
-	
 	if [[ ! -f ~/.luks-done ]]; then
 	echo	
 	echo "LUKS - LUKS - LUKS - LUKS - LUKS - LUKS - LUKS - LUKS - LUKS - LULS - LUKS"
 	echo "HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER"
 	fi
-
-    if [[ ! -f ~/.psd-done ]]; then
-	echo	
-	echo "PSD PSD PSD PSD PSD PSD"
-	echo "FIRE FIRE FIRE FIRE FIRE"
-	fi
-
 
 
 grdns() {
