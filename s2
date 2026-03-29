@@ -108,11 +108,11 @@ su - $USERNAME -c 'git clone https://github.com/sldll/s dot'
 sed -i 's/output/#output/' /etc/sway/config
 echo "output eDP-1 resolution 1366x768 position 0 0" >> /etc/sway/config
 echo "output HDMI-A-1 resolution 1920x1080 position 1920 0" >> /etc/sway/config
-echo "bindsym $mod+Tab workspace back_and_forth" >> /etc/sway/config
+echo "bindsym Mod1+Tab workspace back_and_forth" >> /etc/sway/config
 echo "set $menu rofi -show drun -show-icons" >> /etc/sway/config
 echo "hide_edge_borders smart" >> /etc/sway/config
 echo "exec waybar" >> /etc/sway/config
-echo "bindsym $mod+f layout toggle tabbed split" >> /etc/sway/config
+echo "bindsym Mod1+f layout toggle tabbed split" >> /etc/sway/config
 
 sed -i 's/Mod4/Mod1/' /etc/sway/config
 sed -i 's/Shift+q/c/' /etc/sway/config
