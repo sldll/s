@@ -1,0 +1,21 @@
+#!/bin/sh
+
+apps="mpv sway foot"
+
+bases="$HOME /etc /etc/xdg /usr/share $HOME/.local/share /usr/local/share"
+
+for app in $apps; do
+  for base in $bases; do
+    for path in \
+      "$base/.config/$app" \
+      "$base/$app" \
+      "$base/config/$app"
+    do
+      if [ -d "$path" ]; then
+        find "$path" -type f
+      elif [ -f "$path" ]; then
+        echo "$path"
+      fi
+    done
+  done
+done
