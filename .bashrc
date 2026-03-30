@@ -202,7 +202,7 @@ alias cls='clear'
 alias clr='clear'
 alias d='clear'
 
-alias bs='vim ~/.bashrc'
+alias bs='vim $dot/.bashrc'
 alias sbs='source ~/.bashrc'
 
 #alias ipkg='grep -v '^\s*#' < read -rp "pkgname:" pkgsfile && cat pkgsfile | sudo pacman -S --needed -'
