@@ -30,7 +30,7 @@
 
   "wlr/taskbar": {
     "format": "{icon}",
-    "icon-size": 18,
+    "icon-size": 24,
     "icon-theme": "hicolor",
     "tooltip-format": "{title}",
     "on-click": "activate",
