@@ -33,9 +33,11 @@ alias p='ping 1.1.1.1'
 
 #alias vam='vim $(fzf --preview="bat --color=always {}")'
 alias vam2='selected=$(fzf --preview="bat --color=always {}") && vim "$selected"'
-alias vam='selected=$(fd . . /etc --type f | fzf --preview="bat --color=always {}") && vim "$selected"'
+alias vam='selected=$(fd . $HOME/ /etc --type f | fzf --preview="bat --color=always {}") && vim "$selected"'
 alias v='vim'
 alias vm='vim'
+
+alias cpdot='selected=$(fd . . /etc --type f | fzf --preview="bat --color=always {}") && rsync --relative $selected .'
 
 alias f='read -p "search: " file && fd -H -i -a $file / | fzf'
 alias f1='fzf --preview="bat --color=always {}" --preview-window="right,75%,border-left,<80(up,70%,border-bottom)"'
@@ -433,6 +435,22 @@ lb() {
 gmp() {
   read -p "repo name: " reponame
   gh repo edit "instantuzer/$reponame" --visibility private --accept-visibility-change-consequences
+}
+
+gsub() {
+
+  read -p "Repo (github.com/...): " repo
+  read -p "Subfolder: " subfolder
+  full_url="https://github.com/$repo"
+  target=$(basename "$repo")
+  git clone --no-checkout --filter=blob:none "$full_url" "$target"
+  cd "$target"
+  git config core.sparseCheckout true
+  git config core.sparseCheckoutCone true
+  echo "$subfolder" > .git/info/sparse-checkout
+  git checkout
+  echo "✓ Done! '$subfolder' available in '$target/'"
+
 }
 
 glmp() {
