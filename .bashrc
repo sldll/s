@@ -32,7 +32,8 @@ alias cmp2='grep -Fx -f -i'
 alias p='ping 1.1.1.1'
 
 #alias vam='vim $(fzf --preview="bat --color=always {}")'
-alias vam='selected=$(fzf --preview="bat --color=always {}") && vim "$selected"'
+alias vam2='selected=$(fzf --preview="bat --color=always {}") && vim "$selected"'
+alias vam='selected=$(fd . . /etc --type f | fzf --preview="bat --color=always {}") && vim "$selected"'
 alias v='vim'
 alias vm='vim'
 
