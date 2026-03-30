@@ -1,6 +1,6 @@
 #!/bin/sh
 
-extensions="conf ini cfg toml yaml yml json rc xml lua qml rasi css scss js ts py sh bash zsh fish"
+extensions="vimrc vim conf ini cfg toml yaml yml json rc xml lua qml rasi css scss js ts py sh bash zsh fish"
 exact_names="config configuration rc profile env environment options settings preferences rules policy config.d"
 
 name_pattern=$(echo "$exact_names" | tr ' ' '|')
