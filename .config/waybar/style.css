@@ -20,6 +20,17 @@ window#waybar.hidden {
     opacity: 1.0;
 }
 
+#taskbar button {
+    padding: 0 6px;
+    background: transparent;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+
+#taskbar button.active {
+    background: rgba(255, 255, 255, 0.15);
+}
+
 /*
 window#waybar.empty {
     background-color: transparent;
